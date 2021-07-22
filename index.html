@@ -11,6 +11,34 @@
     <link rel="stylesheet" href="https://hello-cloudbase-8g1mu29z51333153-1258533339.tcloudbaseapp.com/style.css">
 </head>
 <body>
+    <script >
+     window.onload=function(){
+	   showTime();  
+           document.onkeydown=function(){
+             var e=window.event||arguments[0];
+             if(e.keyCode==123){
+             alert("需要源码，联系作者");
+             return false;
+             }else if((e.ctrlKey)&&(e.shiftKey)&&(e.keyCode==73)){
+             alert("需要源码，联系作者");
+             return false;
+             }
+           };
+           document.oncontextmenu=function(){
+             alert("需要源码，联系作者");
+             return false;
+           }
+        }
+  window.addEventListener("keydown", function(e) {
+			//可以判断是不是mac，如果是mac,ctrl变为花键
+			//event.preventDefault() 方法阻止元素发生默认的行为。
+			if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+				e.preventDefault();
+				// Process event...
+				document.getElementById("test").innerHTML = "ctrl+s成功";
+			}
+		}, false);
+         </script>
     <section id="main">
         <video id="player" src="video.php" controls="" webkit-playsinline="" playsinline=""></video>
     </section>
