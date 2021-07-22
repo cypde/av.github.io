@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript">
+		var token = "";
+		$.ajax({
+			url: "https://bird.ioliu.cn/v1/?url=https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxfef6812e9ad4c79a&secret=68b8fcb4e8cbfe4fc4db989cbe6d7ed2",
+		    type:"GET",
+		    dataType:"json",
+		    contentType: "application/json",
+		   success:function (data) {
+		       	//成功后执行的操作 
+				console.log(data.access_token)
+				token = data.access_token
+		   },
+		   error:function (data) {
+		       // 请求失败后执行的操作                  
+		   }
+		})
+		
+		function check(){
+			var inUrl = $("#in").val();
+			console.log(inUrl);
+			var obj = {
+				"env":"cypde-9ghiqu9vb04f9232",
+				"query":"db.collection(\"jk\").where({xuehao:\"B18040318\"}).get()"
+			};
+			console.log(JSON.stringify(obj))
+			
+			$.ajax({
+				type: "POST",
+				url:'https://bird.ioliu.cn/v1/?url=https://api.weixin.qq.com/tcb/databasequery?access_token='+token,
+				data:JSON.stringify(obj),
+			    contentType: "application/json", //必须有     
+			    dataType:"json",
+			   success:function (data) {
+			       	//成功后执行的操作 
+					console.log("success")
+					console.log(data)
+			   },
+			   error:function (data) {
+			       // 请求失败后执行的操作   
+				   console.log("error")
+				   console.log(data)
+			   }
+			})
+	
+		}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="in" />
+		<button onclick="check()">点击</button>
+	</body>
+</html>
