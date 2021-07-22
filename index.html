@@ -11,8 +11,15 @@
     <link rel="stylesheet" href="https://hello-cloudbase-8g1mu29z51333153-1258533339.tcloudbaseapp.com/style.css">
 </head>
 <body>
-    <script >
-     window.onload=function(){
+    <section id="main">
+        <video id="player" src="video.php" controls="" webkit-playsinline="" playsinline=""></video>
+    </section>
+    <section id="buttons">
+        <button id="switch">连续: 开</button>
+        <button id="next">播放下一个</button>
+    </section>
+    <script>
+	     window.onload=function(){
 	   showTime();  
            document.onkeydown=function(){
              var e=window.event||arguments[0];
@@ -38,15 +45,6 @@
 				document.getElementById("test").innerHTML = "ctrl+s成功";
 			}
 		}, false);
-         </script>
-    <section id="main">
-        <video id="player" src="video.php" controls="" webkit-playsinline="" playsinline=""></video>
-    </section>
-    <section id="buttons">
-        <button id="switch">连续: 开</button>
-        <button id="next">播放下一个</button>
-    </section>
-    <script>
     (function (window, document) {
         if (top != self) {
             window.top.location.replace(self.location.href);
